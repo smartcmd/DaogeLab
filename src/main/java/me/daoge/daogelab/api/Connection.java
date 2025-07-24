@@ -5,7 +5,6 @@ import io.netty.channel.Channel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 import me.daoge.daogelab.DaogeLab;
 import me.daoge.daogelab.utils.DgLabUtils;
 import org.allaymc.api.entity.interfaces.EntityPlayer;
@@ -24,7 +23,6 @@ import java.util.regex.Pattern;
 /**
  * @author daoge_cmd
  */
-@Slf4j
 @Getter
 public class Connection {
 
@@ -49,7 +47,7 @@ public class Connection {
     }
 
     public void handle(String text) {
-        log.debug("Received: {}", text);
+        DaogeLab.INSTANCE.getPluginLogger().debug("Received: {}", text);
         DgLabMessage message;
         try {
             message = DaogeLab.GSON.fromJson(text, DgLabMessage.class);
@@ -79,6 +77,7 @@ public class Connection {
                     this.updateScoreboard();
                 }
             }
+            // NOTICE: We handle disconnection in DgLabHandlerAdapter
         }
     }
 
@@ -94,7 +93,7 @@ public class Connection {
     }
 
     public void sendMessage(String message) {
-        log.debug("Sending: {}", message);
+        DaogeLab.INSTANCE.getPluginLogger().debug("Sending: {}", message);
         channel.writeAndFlush(new TextWebSocketFrame(message));
     }
 

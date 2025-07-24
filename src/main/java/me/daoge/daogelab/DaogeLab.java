@@ -4,8 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import eu.okaeri.configs.ConfigManager;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import me.daoge.daogelab.api.ConnectionManager;
+import me.daoge.daogelab.mode.DefaultMode;
+import me.daoge.daogelab.mode.Mode;
 import me.daoge.daogelab.network.WebSocketServer;
 import org.allaymc.api.eventbus.EventHandler;
 import org.allaymc.api.eventbus.event.player.PlayerQuitEvent;
@@ -14,10 +15,12 @@ import org.allaymc.api.registry.Registries;
 import org.allaymc.api.server.Server;
 import org.allaymc.api.utils.Utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author daoge_cmd
  */
-@Slf4j
 public class DaogeLab extends Plugin {
 
     public static DaogeLab INSTANCE;
@@ -25,6 +28,27 @@ public class DaogeLab extends Plugin {
 
     @Getter
     protected DaogeLabConfig config;
+    protected Map<String, Mode> modes;
+    protected Mode currentMode;
+
+    public void switchMode(String modeName) {
+        var mode = modes.get(modeName);
+        if (mode == null) {
+            pluginLogger.error("Mode {} not found! Fallback to default mode", modeName);
+            mode = modes.get(DefaultMode.NAME);
+        }
+
+        if (currentMode != null) {
+            currentMode.onDisable();
+        }
+        currentMode = mode;
+        currentMode.onEnable();
+        pluginLogger.info("Mode switched to {}", modeName);
+    }
+
+    public boolean hasMode(String modeName) {
+        return modes.containsKey(modeName);
+    }
 
     @Override
     public void onEnable() {
@@ -36,14 +60,16 @@ public class DaogeLab extends Plugin {
         );
         Registries.COMMANDS.register(new DaogeLabCommand());
         Server.getInstance().getEventBus().registerListener(this);
+        registerModes();
+        switchMode(this.config.mode());
         WebSocketServer.run();
-        log.info("DaogeLab plugin is enabled!");
+        pluginLogger.info("DaogeLab plugin is enabled!");
     }
 
     @Override
     public void onDisable() {
         WebSocketServer.stop();
-        log.info("DaogeLab plugin is disabled!");
+        pluginLogger.info("DaogeLab plugin is disabled!");
     }
 
     @EventHandler
@@ -52,5 +78,14 @@ public class DaogeLab extends Plugin {
         if (connection != null) {
             connection.disconnect();
         }
+    }
+
+    protected void registerModes() {
+        this.modes = new HashMap<>();
+        registerMode(new DefaultMode());
+    }
+
+    protected void registerMode(Mode mode) {
+        this.modes.put(mode.getModeName(), mode);
     }
 }

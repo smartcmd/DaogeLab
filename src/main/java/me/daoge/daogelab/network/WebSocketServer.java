@@ -9,14 +9,12 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import me.daoge.daogelab.DaogeLab;
 
 /**
  * @author daoge_cmd
  */
-@Slf4j
-public class WebSocketServer {
+public final class WebSocketServer {
 
     @Getter
     private static volatile boolean running = false;
@@ -50,10 +48,10 @@ public class WebSocketServer {
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
-            Thread.ofVirtual().name("WebSocket Server Manager Thread").start(() -> {
+            Thread.ofVirtual().name("DgLab WebSocket Server Manager Thread").start(() -> {
                 try {
                     ChannelFuture f = bootstrap.bind(DaogeLab.INSTANCE.getConfig().port()).sync();
-                    log.info("DgLab WebSocket server start in port {}", DaogeLab.INSTANCE.getConfig().port());
+                    DaogeLab.INSTANCE.getPluginLogger().info("DgLab WebSocket server start in port {}", DaogeLab.INSTANCE.getConfig().port());
                     serverChannel = f.channel();
                     running = true;
 
@@ -82,7 +80,7 @@ public class WebSocketServer {
                 }
             });
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            DaogeLab.INSTANCE.getPluginLogger().error(e.getMessage(), e);
         }
     }
 
@@ -90,7 +88,7 @@ public class WebSocketServer {
         if (running && serverChannel != null) {
             serverChannel.close();
             running = false;
-            log.info("DgLab WebSocket server stopped");
+            DaogeLab.INSTANCE.getPluginLogger().info("DgLab WebSocket server stopped");
         }
     }
 }

@@ -43,12 +43,26 @@ public class DaogeLabCommand extends SimpleCommand {
                     var connection = ConnectionManager.getByUUID(player.getLoginData().getUuid());
                     if (connection != null) {
                         connection.disconnect();
-                        player.sendTr(TextFormat.YELLOW + "%daogelab:disconnect");
+                        player.sendTr(TextFormat.YELLOW + "%daogelab:disconnecting");
                         return context.success();
                     } else {
                         player.sendTr(TextFormat.RED + "%daogelab:not_connected");
                         return context.fail();
                     }
-                }, SenderType.PLAYER);
+                }, SenderType.PLAYER)
+                .root()
+                .key("switchmode")
+                .str("modename")
+                .exec(context -> {
+                    String modeName = context.getResult(1);
+                    if (!DaogeLab.INSTANCE.hasMode(modeName)) {
+                        context.getSender().sendTr(TextFormat.RED + "%daogelab:unknown_mode", modeName);
+                        return context.fail();
+                    }
+
+                    DaogeLab.INSTANCE.switchMode(modeName);
+                    context.getSender().sendTr(TextFormat.GREEN + "%daogelab:mode_switched", modeName);
+                    return context.success();
+                });
     }
 }

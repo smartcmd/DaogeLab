@@ -5,6 +5,7 @@ import eu.okaeri.configs.annotation.Comment;
 import eu.okaeri.configs.annotation.CustomKey;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import me.daoge.daogelab.mode.DefaultMode;
 
 /**
  * @author daoge_cmd
@@ -23,4 +24,7 @@ public class DaogeLabConfig extends OkaeriConfig {
     @Comment("If true, connect to WebSocket server using HTTPS protocol. Default: false")
     @Comment("If you connect from the Internet, you may need to turn on this option")
     private boolean useHttps = false;
+
+    @Comment("Mode determines how the current will change. Default: default_mode")
+    private String mode = DefaultMode.NAME;
 }

@@ -4,7 +4,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.util.AttributeKey;
-import lombok.extern.slf4j.Slf4j;
+import me.daoge.daogelab.DaogeLab;
 import me.daoge.daogelab.api.Connection;
 import me.daoge.daogelab.api.ConnectionManager;
 import me.daoge.daogelab.utils.QRCodeUtils;
@@ -13,7 +13,6 @@ import org.allaymc.api.utils.TextFormat;
 /**
  * @author daoge_cmd
  */
-@Slf4j
 public class DgLabHandlerAdapter extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -32,7 +31,7 @@ public class DgLabHandlerAdapter extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) {
         Connection connection = new Connection(ctx.channel());
         ConnectionManager.CONNECTIONS.add(connection);
-        log.info("new DgLab connected");
+        DaogeLab.INSTANCE.getPluginLogger().info("DgLab client connected: {}", ctx.channel().remoteAddress());
     }
 
     @Override
@@ -40,7 +39,8 @@ public class DgLabHandlerAdapter extends ChannelInboundHandlerAdapter {
         Connection connection = ConnectionManager.getByChannel(ctx.channel());
         if (connection != null) {
             ConnectionManager.CONNECTIONS.remove(connection);
-            log.info("DgLab disconnected, clientId: {}", connection.getClientId());
+            DaogeLab.INSTANCE.getPluginLogger().info("DgLab client disconnected: {}", connection.getChannel().remoteAddress());
+            connection.getPlayer().sendTr(TextFormat.YELLOW + "%daogelab:disconnected");
 
             QRCodeUtils.clearQRCode(connection.getPlayer());
             connection.getStrength().clear();

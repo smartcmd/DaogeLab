@@ -24,4 +24,18 @@ public class Strength {
         this.aMaxStrength = 0;
         this.bMaxStrength = 0;
     }
+
+    public int getCurrentStrength(ChannelType channelType) {
+        return switch (channelType) {
+            case A -> aCurrentStrength;
+            case B -> bCurrentStrength;
+        };
+    }
+
+    public int getMaxStrength(ChannelType channelType) {
+        return switch (channelType) {
+            case A -> aMaxStrength;
+            case B -> bMaxStrength;
+        };
+    }
 }
