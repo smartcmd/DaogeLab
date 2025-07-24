@@ -39,7 +39,7 @@ public class DefaultMode extends Mode {
         }
 
         var maxHealth = player.getMaxHealth();
-        var percentage = Math.min(1, damage * 3f / maxHealth);
+        var percentage = damage / maxHealth;
         var aStrength = (int) (percentage * connection.getStrength().getMaxStrength(ChannelType.A));
         var bStrength = (int) (percentage * connection.getStrength().getMaxStrength(ChannelType.B));
 
