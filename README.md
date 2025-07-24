@@ -1,56 +1,29 @@
-# Allay Java Plugin Template
+# DaogeLab
 
-Welcome to the java plugin template for allay.
+A DgLab plugin for Minecraft: Bedrock Edition running in [Allay](https://github.com/AllayMC/Allay) platform.
 
-## Prerequisites
+## Feature
 
-- Java21 or higher.
-- Allay installed.
+- Supports DGLab device connectivity and control.
+- Provide QR code scanning connection interface.
+- Injury feedback system.
 
-## Getting Started
+## Installation
 
-1. **Clone this Repository**
+- Download the `.jar` file from release or action.
+- Put it in your `plugins` folder.
+- Restart the server. Configuration file will be generated in `plugins/DaogeLab/config.yml`
+- After editing the configuration file, restart the server again. Enjoy it.
 
-```bash
-git clone https://github.com/AllayMC/JavaPluginTemplate.git
-```
-   
-2. **Navigate to the Cloned Directory**
+For how to install Allay, please refer to https://docs.allaymc.org.
 
-```bash
-cd JavaPluginTemplate
-```
-   
-3. **Change Plugin Information**
+## Usage
 
-- Rename package name from `org.allaymc.javaplugintemplate` to `your.group.name.and.pluginname`
-- Edit [build.gradle.kts](build.gradle.kts) and [settings.gradle.kts](settings.gradle.kts)
-- Edit [plugin.json](src/main/resources/plugin.json)
-- Reload gradle
-   
-4. **Build and Run Your Plugin**
-
-```bash
-gradlew shadowJar
-```
-   
-This command will produce a `.jar` file in the `build/libs` directory. 
-Copy the `.jar` file to the `plugins` directory of your allay server.
-Start the allay server and check the logs to ensure your plugin loads and operates
-as expected.
-
-5. **Test Your Plugin in Gradle**
-
-```bash
-gradlew runServer
-```
-
-This command will start an allay server with your plugin loaded.
-Then close allay server by clicking `X` in the dashboard window.
-
-## Documentation
-
-For a deeper dive into the Allay API and its functionalities, please refer to our [documentation](https://docs.allaymc.org) (WIP).
+- Enter the server.
+- Execute the command `/dglab connect`, and then a QR code will be displayed.
+- Open your DgLab APP, choose `Socket Control` and scan the QR code.
+- If connected successfully, the strength of A/B channels will be displayed in top right corner.
+- Use command `/dglab disconnect` to disconnect.
 
 ## License
 
