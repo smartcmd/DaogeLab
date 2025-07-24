@@ -40,11 +40,14 @@ public class DgLabHandlerAdapter extends ChannelInboundHandlerAdapter {
         if (connection != null) {
             ConnectionManager.CONNECTIONS.remove(connection);
             DaogeLab.INSTANCE.getPluginLogger().info("DgLab client disconnected: {}", connection.getChannel().remoteAddress());
-            connection.getPlayer().sendTr(TextFormat.YELLOW + "%daogelab:disconnected");
 
-            QRCodeUtils.clearQRCode(connection.getPlayer());
-            connection.getStrength().clear();
-            connection.updateScoreboard();
+            var player = connection.getPlayer();
+            if (player != null) {
+                player.sendTr(TextFormat.YELLOW + "%daogelab:disconnected");
+                QRCodeUtils.clearQRCode(player);
+                connection.getStrength().clear();
+                connection.updateScoreboard();
+            }
         }
     }
 }
