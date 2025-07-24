@@ -5,7 +5,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "org.allaymc.javaplugintemplate"
+group = "me.daoge.daogelab"
 description = "Java plugin template for allay server"
 version = "0.1.0"
 
@@ -24,8 +24,11 @@ repositories {
 }
 
 dependencies {
-    compileOnly(group = "org.allaymc.allay", name = "api", version = "master-SNAPSHOT")
+    compileOnly(group = "org.allaymc.allay", name = "api", version = "f76585202b")
     compileOnly(group = "org.projectlombok", name = "lombok", version = "1.18.34")
+
+    implementation(group = "io.netty", name = "netty-codec-http", version = "4.1.97.Final")
+    implementation(group = "com.google.zxing", name = "core", version = "3.5.3")
 
     annotationProcessor(group = "org.projectlombok", name = "lombok", version = "1.18.34")
 }

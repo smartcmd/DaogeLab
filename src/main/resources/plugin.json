@@ -1,6 +1,6 @@
 {
-  "entrance": "org.allaymc.javaplugintemplate.JavaPluginTemplate",
-  "name": "JavaPluginTemplate",
-  "authors": ["YourNameHere"],
+  "entrance": "me.daoge.daogelab.DaogeLab",
+  "name": "DaogeLab",
+  "authors": ["daoge"],
   "version": "0.1.0"
 }

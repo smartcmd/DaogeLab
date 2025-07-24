@@ -1,0 +1,6 @@
+{
+    "daogelab:scan_qr_code": "Scan the QR code in the bottom right corner to connect",
+    "daogelab:disconnect": "Disconnected from WebSocket server",
+    "daogelab:not_connected": "Currently not connected to the WebSocket server",
+    "daogelab:offhand_not_empty": "Failed to give QR code, please make sure your offhand is empty"
+}
