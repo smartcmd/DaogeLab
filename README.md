@@ -2,6 +2,8 @@
 
 A DgLab plugin for Minecraft: Bedrock Edition running in [Allay](https://github.com/AllayMC/Allay) platform.
 
+<img src="img.png" alt="Logo" width="768" height="480">
+
 ## Feature
 
 - Supports DGLab device connectivity and control.
