@@ -25,6 +25,11 @@ For how to install Allay, please refer to https://docs.allaymc.org.
 - If connected successfully, the strength of A/B channels will be displayed in top right corner.
 - Use command `/dglab disconnect` to disconnect.
 
+## Acknowledgement
+
+- [Minecraft-DG-LAB](https://github.com/DancingSnow0517/Minecraft-DG-LAB)
+- [DG-LAB-OPENSOURCE](https://github.com/DG-LAB-OPENSOURCE/DG-LAB-OPENSOURCE)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
