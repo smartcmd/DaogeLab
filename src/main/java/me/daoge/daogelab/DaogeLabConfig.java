@@ -7,9 +7,6 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import me.daoge.daogelab.mode.DefaultMode;
 
-/**
- * @author daoge_cmd
- */
 @Getter
 @Accessors(fluent = true)
 public class DaogeLabConfig extends OkaeriConfig {

@@ -10,9 +10,6 @@ import me.daoge.daogelab.api.ConnectionManager;
 import me.daoge.daogelab.utils.QRCodeUtils;
 import org.allaymc.api.utils.TextFormat;
 
-/**
- * @author daoge_cmd
- */
 public class DgLabHandlerAdapter extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

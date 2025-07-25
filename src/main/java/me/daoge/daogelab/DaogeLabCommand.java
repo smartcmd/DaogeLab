@@ -8,9 +8,6 @@ import org.allaymc.api.command.tree.CommandTree;
 import org.allaymc.api.permission.PermissionGroups;
 import org.allaymc.api.utils.TextFormat;
 
-/**
- * @author daoge_cmd
- */
 public class DaogeLabCommand extends SimpleCommand {
 
     public DaogeLabCommand() {

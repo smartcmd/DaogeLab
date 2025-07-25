@@ -2,9 +2,6 @@ package me.daoge.daogelab.mode;
 
 import org.allaymc.api.server.Server;
 
-/**
- * @author daoge_cmd
- */
 public abstract class Mode {
     public abstract String getModeName();
 

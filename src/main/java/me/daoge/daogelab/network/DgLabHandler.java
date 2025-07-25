@@ -15,9 +15,6 @@ import org.allaymc.api.server.Server;
 
 import java.util.UUID;
 
-/**
- * @author daoge_cmd
- */
 public class DgLabHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) {

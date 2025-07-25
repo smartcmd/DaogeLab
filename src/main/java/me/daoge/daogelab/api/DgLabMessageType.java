@@ -2,9 +2,6 @@ package me.daoge.daogelab.api;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @author daoge_cmd
- */
 public enum DgLabMessageType {
     @SerializedName("heartbeat")
     HEARTBEAT,

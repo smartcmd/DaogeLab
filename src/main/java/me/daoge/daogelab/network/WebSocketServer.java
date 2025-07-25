@@ -11,9 +11,6 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import lombok.Getter;
 import me.daoge.daogelab.DaogeLab;
 
-/**
- * @author daoge_cmd
- */
 public final class WebSocketServer {
 
     @Getter

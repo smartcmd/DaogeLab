@@ -2,9 +2,6 @@ package me.daoge.daogelab.api;
 
 import lombok.Getter;
 
-/**
- * @author daoge_cmd
- */
 @Getter
 public enum ChannelType {
     A(1),

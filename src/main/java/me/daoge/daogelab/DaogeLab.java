@@ -18,9 +18,6 @@ import org.allaymc.api.utils.Utils;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author daoge_cmd
- */
 public class DaogeLab extends Plugin {
 
     public static DaogeLab INSTANCE;

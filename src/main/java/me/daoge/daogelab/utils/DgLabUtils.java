@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-/**
- * @author daoge_cmd
- */
 public class DgLabUtils {
     /**
      * Convent frequency to Dg-Lab format.

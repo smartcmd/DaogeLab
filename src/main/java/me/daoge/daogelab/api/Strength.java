@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * @author daoge_cmd
- */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

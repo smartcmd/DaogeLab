@@ -10,9 +10,6 @@ import org.allaymc.api.eventbus.event.entity.EntityDieEvent;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * @author daoge_cmd
- */
 public class DefaultMode extends Mode {
 
     public static final String NAME = "default_mode";

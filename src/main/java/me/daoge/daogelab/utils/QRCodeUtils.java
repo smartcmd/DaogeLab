@@ -20,9 +20,6 @@ import java.awt.image.BufferedImage;
 import java.util.EnumMap;
 import java.util.Map;
 
-/**
- * @author daoge_cmd
- */
 public class QRCodeUtils {
 
     protected static final Identifier IS_DGLAB_QR_CODE = new Identifier("daogelab:is_dglab_qr_code");

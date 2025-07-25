@@ -2,9 +2,6 @@ package me.daoge.daogelab.api;
 
 import me.daoge.daogelab.DaogeLab;
 
-/**
- * @author daoge_cmd
- */
 public record DgLabMessage(DgLabMessageType type, String clientId, String targetId, String message) {
 
     public String toJson() {

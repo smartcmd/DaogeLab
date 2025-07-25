@@ -20,9 +20,6 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author daoge_cmd
- */
 @Getter
 public class Connection {
 

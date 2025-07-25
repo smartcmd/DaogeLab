@@ -8,9 +8,6 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-/**
- * @author daoge_cmd
- */
 public class ConnectionManager {
     public static final Set<Connection> CONNECTIONS = new CopyOnWriteArraySet<>();
 
