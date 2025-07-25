@@ -1,5 +1,5 @@
 {
-    "daogelab:scan_qr_code": "扫描右下角的二维码进行连接",
+    "daogelab:scan_qr_code": "扫描左下角的二维码进行连接",
     "daogelab:disconnecting": "正在断开与 WebSocket 服务器的连接",
     "daogelab:disconnected": "已断开与 WebSocket 服务器的连接",
     "daogelab:not_connected": "目前未连接到 WebSocket 服务器",
