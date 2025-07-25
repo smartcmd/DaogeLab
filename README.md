@@ -4,7 +4,7 @@ A DgLab plugin for Minecraft: Bedrock Edition running in [Allay](https://github.
 
 <img src="img.png" alt="Logo" width="768" height="480">
 
-This plugin is a port of [DG-LAB-OPENSOURCE](https://github.com/DG-LAB-OPENSOURCE/DG-LAB-OPENSOURCE).
+This plugin is a port of [Minecraft-DG-LAB](https://github.com/DancingSnow0517/Minecraft-DG-LAB).
 
 ## Feature
 
@@ -31,8 +31,8 @@ For how to install Allay, please refer to https://docs.allaymc.org.
 
 ## Acknowledgement
 
-- [Minecraft-DG-LAB](https://github.com/DancingSnow0517/Minecraft-DG-LAB): Protocol reference
-- [DG-LAB-OPENSOURCE](https://github.com/DG-LAB-OPENSOURCE/DG-LAB-OPENSOURCE): Code reference
+- [Minecraft-DG-LAB](https://github.com/DancingSnow0517/Minecraft-DG-LAB): Code reference
+- [DG-LAB-OPENSOURCE](https://github.com/DG-LAB-OPENSOURCE/DG-LAB-OPENSOURCE): Protocol reference
 
 ## License
 
