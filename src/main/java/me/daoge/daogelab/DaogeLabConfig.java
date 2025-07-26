@@ -20,6 +20,7 @@ public class DaogeLabConfig extends OkaeriConfig {
     @CustomKey("use-https")
     @Comment("If true, connect to WebSocket server using HTTPS protocol. Default: false")
     @Comment("If you connect from the Internet, you may need to turn on this option")
+    @Comment("Note that if you have this enabled, the address must be a domain name instead of an IP address")
     private boolean useHttps = false;
 
     @Comment("Mode determines how the current will change. Default: default_mode")
