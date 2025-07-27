@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly(group = "org.allaymc.allay", name = "api", version = "765e597881")
+    compileOnly(group = "org.allaymc.allay", name = "api", version = "861f82d6fd")
     compileOnly(group = "org.projectlombok", name = "lombok", version = "1.18.34")
 
     implementation(group = "io.netty", name = "netty-codec-http", version = "4.1.97.Final")
