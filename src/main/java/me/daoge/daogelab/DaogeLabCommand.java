@@ -24,7 +24,7 @@ public class DaogeLabCommand extends SimpleCommand {
                             .formatted(
                                     DaogeLab.INSTANCE.getConfig().useHttps() ? "wss" : "ws",
                                     DaogeLab.INSTANCE.getConfig().address(),
-                                    DaogeLab.INSTANCE.getConfig().port(),
+                                    DaogeLab.INSTANCE.getConfig().publicPort(),
                                     player.getLoginData().getUuid().toString());
                     if (QRCodeUtils.showQRCode(player, qrText)) {
                         player.sendTr(TextFormat.YELLOW + "%daogelab:scan_qr_code");

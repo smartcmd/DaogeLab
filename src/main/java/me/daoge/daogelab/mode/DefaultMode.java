@@ -9,7 +9,6 @@ import org.allaymc.api.eventbus.EventHandler;
 import org.allaymc.api.eventbus.event.entity.EntityDamageEvent;
 import org.allaymc.api.eventbus.event.entity.EntityDieEvent;
 import org.allaymc.api.eventbus.event.entity.ProjectileHitEvent;
-import org.allaymc.api.math.MathUtils;
 import org.allaymc.api.world.Sound;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.packet.PlaySoundPacket;

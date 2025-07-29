@@ -10,19 +10,26 @@ import me.daoge.daogelab.mode.DefaultMode;
 @Getter
 @Accessors(fluent = true)
 public class DaogeLabConfig extends OkaeriConfig {
-    @Comment("The address for the DgLab-App to connect. Default: 127.0.0.1")
-    @Comment("In most cases, this is same with the address you use to connect to the MC server")
+    @Comment("The address for the DgLab app to connect In most cases, this")
+    @Comment("is same with the address you use to connect to the MC server")
     private String address = "127.0.0.1";
 
-    @Comment("The port for the DgLab ws server port number. Default: 8080")
+    @Comment("The port for the DgLab app to connect. In most cases, this is same")
+    @Comment("with the port that websocket server use, unless you are using frp,")
+    @Comment("causing the app to connect to a different port than the one open to")
+    @Comment("the websocket server")
+    @CustomKey("public-port")
+    private int publicPort = 8080;
+
+    @Comment("The port that will open to the DgLab websocket server")
     private int port = 8080;
 
     @CustomKey("use-https")
-    @Comment("If true, connect to WebSocket server using HTTPS protocol. Default: false")
-    @Comment("If you connect from the Internet, you may need to turn on this option")
-    @Comment("Note that if you have this enabled, the address must be a domain name instead of an IP address")
+    @Comment("If true, connect to WebSocket server using HTTPS protocol. If you connect")
+    @Comment("from the Internet, you may need to turn on this option. Note that if you")
+    @Comment("have this enabled, the address must be a domain name instead of an IP address")
     private boolean useHttps = false;
 
-    @Comment("Mode determines how the current will change. Default: default_mode")
+    @Comment("Mode determines how the current will change")
     private String mode = DefaultMode.NAME;
 }
