@@ -7,7 +7,7 @@ plugins {
 
 group = "me.daoge.daogelab"
 description = "Java plugin template for allay server"
-version = "0.1.0"
+version = "0.1.1"
 
 java {
     toolchain {
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly(group = "org.allaymc.allay", name = "api", version = "861f82d6fd")
+    compileOnly(group = "org.allaymc.allay", name = "api", version = "6ff6fe4350")
     compileOnly(group = "org.projectlombok", name = "lombok", version = "1.18.34")
 
     implementation(group = "io.netty", name = "netty-codec-http", version = "4.1.97.Final")

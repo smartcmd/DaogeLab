@@ -100,7 +100,7 @@ public class DefaultMode extends Mode {
             connection.addPulse(ChannelType.A, pulse);
             connection.addPulse(ChannelType.B, pulse);
 
-            if (snowball.getShootingEntity() instanceof EntityPlayer player) {
+            if (snowball.getShooter() instanceof EntityPlayer player) {
                 var packet = new PlaySoundPacket();
                 packet.setSound(Sound.RANDOM_ORB);
                 var pos = player.getLocation();
