@@ -5,7 +5,7 @@ import me.daoge.daogelab.api.ConnectionManager;
 import me.daoge.daogelab.utils.DgLabUtils;
 import org.allaymc.api.block.data.Instrument;
 import org.allaymc.api.entity.interfaces.EntityPlayer;
-import org.allaymc.api.entity.interfaces.EntitySnowball;
+import org.allaymc.api.entity.interfaces.EntityProjectile;
 import org.allaymc.api.eventbus.EventHandler;
 import org.allaymc.api.eventbus.event.entity.EntityDamageEvent;
 import org.allaymc.api.eventbus.event.entity.EntityDieEvent;
@@ -80,8 +80,8 @@ public class DefaultMode extends Mode {
     }
 
     @EventHandler
-    protected void onSnowballHit(ProjectileHitEvent event) {
-        if (event.getEntity() instanceof EntitySnowball snowball &&
+    protected void onProjectileHit(ProjectileHitEvent event) {
+        if (event.getEntity() instanceof EntityProjectile projectile &&
             event.getVictim() instanceof EntityPlayer zako) {
             var connection = ConnectionManager.getByPlayer(zako);
             if (connection == null) {
@@ -100,7 +100,7 @@ public class DefaultMode extends Mode {
             connection.addPulse(ChannelType.A, pulse);
             connection.addPulse(ChannelType.B, pulse);
 
-            if (snowball.getShooter() instanceof EntityPlayer player) {
+            if (projectile.getShooter() instanceof EntityPlayer player) {
                 var pos = player.getLocation();
                 player.getDimension().addSound(
                         pos.x(), pos.y() + player.getEyeHeight(), pos.z(),
