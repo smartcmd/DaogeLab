@@ -3,6 +3,7 @@ package me.daoge.daogelab;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import eu.okaeri.configs.ConfigManager;
+import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
 import lombok.Getter;
 import me.daoge.daogelab.api.ConnectionManager;
 import me.daoge.daogelab.mode.DefaultMode;
@@ -13,7 +14,6 @@ import org.allaymc.api.eventbus.event.player.PlayerQuitEvent;
 import org.allaymc.api.plugin.Plugin;
 import org.allaymc.api.registry.Registries;
 import org.allaymc.api.server.Server;
-import org.allaymc.api.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +53,13 @@ public class DaogeLab extends Plugin {
         DaogeLab.GSON = new GsonBuilder().create();
         this.config = ConfigManager.create(
                 DaogeLabConfig.class,
-                Utils.createConfigInitializer(this.getPluginContainer().dataFolder().resolve("config.yml"))
+                it -> {
+                    it.withConfigurer(new YamlSnakeYamlConfigurer());
+                    it.withBindFile(this.getPluginContainer().dataFolder().resolve("config.yml"));
+                    it.withRemoveOrphans(true);
+                    it.saveDefaults();
+                    it.load(true);
+                }
         );
         Registries.COMMANDS.register(new DaogeLabCommand());
         Server.getInstance().getEventBus().registerListener(this);

@@ -39,7 +39,7 @@ public class DgLabHandler extends SimpleChannelInboundHandler<TextWebSocketFrame
             connection.setTargetId(targetId.toString());
             connection.sendMessage(DgLabMessage.bind(targetId.toString(), "", "targetId"));
 
-            var player = Server.getInstance().getPlayerService().getPlayers().get(UUID.fromString(connection.getClientId()));
+            var player = Server.getInstance().getPlayerManager().getPlayers().get(UUID.fromString(connection.getClientId()));
             if (player == null) {
                 DaogeLab.INSTANCE.getPluginLogger().error("Player with uuid {} not found", connection.getClientId());
                 return;

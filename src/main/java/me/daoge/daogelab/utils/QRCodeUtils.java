@@ -6,14 +6,14 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitArray;
 import com.google.zxing.common.BitMatrix;
 import lombok.SneakyThrows;
-import org.allaymc.api.container.FullContainerType;
+import org.allaymc.api.container.ContainerTypes;
 import org.allaymc.api.entity.interfaces.EntityPlayer;
 import org.allaymc.api.item.data.ItemLockMode;
 import org.allaymc.api.item.interfaces.ItemAirStack;
 import org.allaymc.api.item.interfaces.ItemFilledMapStack;
 import org.allaymc.api.item.type.ItemTypes;
 import org.allaymc.api.pdc.PersistentDataType;
-import org.allaymc.api.utils.Identifier;
+import org.allaymc.api.utils.identifier.Identifier;
 import org.allaymc.api.utils.TextFormat;
 
 import java.awt.image.BufferedImage;
@@ -25,9 +25,9 @@ public class QRCodeUtils {
     protected static final Identifier IS_DGLAB_QR_CODE = new Identifier("daogelab:is_dglab_qr_code");
 
     public static boolean showQRCode(EntityPlayer player, String text) {
-        var container = player.getContainer(FullContainerType.OFFHAND);
+        var container = player.getContainer(ContainerTypes.OFFHAND);
         if (!container.isEmpty() && !container.getOffhand().getPersistentDataContainer().get(IS_DGLAB_QR_CODE, PersistentDataType.BOOLEAN)) {
-            player.sendTr(TextFormat.RED + "%daogelab:offhand_not_empty");
+            player.sendTranslatable(TextFormat.RED + "%daogelab:offhand_not_empty");
             return false;
         }
 
@@ -42,7 +42,7 @@ public class QRCodeUtils {
     }
 
     public static void clearQRCode(EntityPlayer player) {
-        var container = player.getContainer(FullContainerType.OFFHAND);
+        var container = player.getContainer(ContainerTypes.OFFHAND);
         if (container.getOffhand() instanceof ItemFilledMapStack mapItem &&
             mapItem.getPersistentDataContainer().get(IS_DGLAB_QR_CODE, PersistentDataType.BOOLEAN)) {
             container.setOffhand(ItemAirStack.AIR_STACK);

@@ -3,15 +3,15 @@ package me.daoge.daogelab.mode;
 import me.daoge.daogelab.api.ChannelType;
 import me.daoge.daogelab.api.ConnectionManager;
 import me.daoge.daogelab.utils.DgLabUtils;
+import org.allaymc.api.block.data.Instrument;
 import org.allaymc.api.entity.interfaces.EntityPlayer;
 import org.allaymc.api.entity.interfaces.EntitySnowball;
 import org.allaymc.api.eventbus.EventHandler;
 import org.allaymc.api.eventbus.event.entity.EntityDamageEvent;
 import org.allaymc.api.eventbus.event.entity.EntityDieEvent;
 import org.allaymc.api.eventbus.event.entity.ProjectileHitEvent;
-import org.allaymc.api.world.Sound;
-import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.bedrock.packet.PlaySoundPacket;
+import org.allaymc.api.world.sound.NoteSound;
+import org.allaymc.api.world.sound.SimpleSound;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -101,13 +101,11 @@ public class DefaultMode extends Mode {
             connection.addPulse(ChannelType.B, pulse);
 
             if (snowball.getShooter() instanceof EntityPlayer player) {
-                var packet = new PlaySoundPacket();
-                packet.setSound(Sound.RANDOM_ORB);
                 var pos = player.getLocation();
-                packet.setPosition(Vector3f.from(pos.x(), pos.y() + player.getEyeHeight(), pos.z()));
-                packet.setVolume(0.4f);
-                packet.setPitch(0.5f);
-                player.sendPacket(packet);
+                player.getDimension().addSound(
+                        pos.x(), pos.y() + player.getEyeHeight(), pos.z(),
+                        new NoteSound(Instrument.PIANO, 12)
+                );
             }
         }
     }

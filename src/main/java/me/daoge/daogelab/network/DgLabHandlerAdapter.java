@@ -40,7 +40,7 @@ public class DgLabHandlerAdapter extends ChannelInboundHandlerAdapter {
 
             var player = connection.getPlayer();
             if (player != null) {
-                player.sendTr(TextFormat.YELLOW + "%daogelab:disconnected");
+                player.sendTranslatable(TextFormat.YELLOW + "%daogelab:disconnected");
                 QRCodeUtils.clearQRCode(player);
                 connection.getStrength().clear();
                 connection.updateScoreboard();

@@ -60,7 +60,7 @@ public class Connection {
         switch (message.type()) {
             case BIND -> {
                 sendMessage(DgLabMessage.bind(message.clientId(), message.targetId(), "200"));
-                this.player = Server.getInstance().getPlayerService().getPlayers().get(UUID.fromString(clientId));
+                this.player = Server.getInstance().getPlayerManager().getPlayers().get(UUID.fromString(clientId));
                 this.scoreboard = new Scoreboard("DgLab Strength of " + player.getOriginName());
                 this.scoreboard.addViewer(player, DisplaySlot.SIDEBAR);
             }

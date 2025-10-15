@@ -2,13 +2,13 @@ package me.daoge.daogelab;
 
 import me.daoge.daogelab.api.ConnectionManager;
 import me.daoge.daogelab.utils.QRCodeUtils;
+import org.allaymc.api.command.Command;
 import org.allaymc.api.command.SenderType;
-import org.allaymc.api.command.SimpleCommand;
 import org.allaymc.api.command.tree.CommandTree;
 import org.allaymc.api.permission.PermissionGroups;
 import org.allaymc.api.utils.TextFormat;
 
-public class DaogeLabCommand extends SimpleCommand {
+public class DaogeLabCommand extends Command {
 
     public DaogeLabCommand() {
         super("dglab", "DgLab main command");
@@ -27,7 +27,7 @@ public class DaogeLabCommand extends SimpleCommand {
                                     DaogeLab.INSTANCE.getConfig().publicPort(),
                                     player.getLoginData().getUuid().toString());
                     if (QRCodeUtils.showQRCode(player, qrText)) {
-                        player.sendTr(TextFormat.YELLOW + "%daogelab:scan_qr_code");
+                        player.sendTranslatable(TextFormat.YELLOW + "%daogelab:scan_qr_code");
                         return context.success();
                     }
 
@@ -40,10 +40,10 @@ public class DaogeLabCommand extends SimpleCommand {
                     var connection = ConnectionManager.getByUUID(player.getLoginData().getUuid());
                     if (connection != null) {
                         connection.disconnect();
-                        player.sendTr(TextFormat.YELLOW + "%daogelab:disconnecting");
+                        player.sendTranslatable(TextFormat.YELLOW + "%daogelab:disconnecting");
                         return context.success();
                     } else {
-                        player.sendTr(TextFormat.RED + "%daogelab:not_connected");
+                        player.sendTranslatable(TextFormat.RED + "%daogelab:not_connected");
                         return context.fail();
                     }
                 }, SenderType.PLAYER)
@@ -53,12 +53,12 @@ public class DaogeLabCommand extends SimpleCommand {
                 .exec(context -> {
                     String modeName = context.getResult(1);
                     if (!DaogeLab.INSTANCE.hasMode(modeName)) {
-                        context.getSender().sendTr(TextFormat.RED + "%daogelab:unknown_mode", modeName);
+                        context.getSender().sendTranslatable(TextFormat.RED + "%daogelab:unknown_mode", modeName);
                         return context.fail();
                     }
 
                     DaogeLab.INSTANCE.switchMode(modeName);
-                    context.getSender().sendTr(TextFormat.GREEN + "%daogelab:mode_switched", modeName);
+                    context.getSender().sendTranslatable(TextFormat.GREEN + "%daogelab:mode_switched", modeName);
                     return context.success();
                 });
     }

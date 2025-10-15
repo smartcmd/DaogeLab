@@ -1,6 +1,8 @@
 {
   "entrance": "me.daoge.daogelab.DaogeLab",
+  "description": "A DgLab plugin for Minecraft: Bedrock Edition running in Allay platform",
   "name": "DaogeLab",
   "authors": ["daoge"],
-  "version": "0.1.1"
+  "version": "0.2.0",
+  "api_version": ">=0.14.0"
 }
