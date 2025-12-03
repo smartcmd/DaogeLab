@@ -10,7 +10,7 @@ import me.daoge.daogelab.mode.DefaultMode;
 import me.daoge.daogelab.mode.Mode;
 import me.daoge.daogelab.network.WebSocketServer;
 import org.allaymc.api.eventbus.EventHandler;
-import org.allaymc.api.eventbus.event.player.PlayerQuitEvent;
+import org.allaymc.api.eventbus.event.server.PlayerQuitEvent;
 import org.allaymc.api.plugin.Plugin;
 import org.allaymc.api.registry.Registries;
 import org.allaymc.api.server.Server;
@@ -77,7 +77,7 @@ public class DaogeLab extends Plugin {
 
     @EventHandler
     protected void onPlayerQuit(PlayerQuitEvent event) {
-        var connection = ConnectionManager.getByPlayer(event.getPlayer());
+        var connection = ConnectionManager.getByPlayer(event.getPlayer().getControlledEntity());
         if (connection != null) {
             connection.disconnect();
         }

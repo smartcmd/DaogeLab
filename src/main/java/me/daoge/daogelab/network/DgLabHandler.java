@@ -45,7 +45,10 @@ public class DgLabHandler extends SimpleChannelInboundHandler<TextWebSocketFrame
                 return;
             }
 
-            QRCodeUtils.clearQRCode(player);
+            var entity = player.getControlledEntity();
+            if (entity != null) {
+                QRCodeUtils.clearQRCode(entity);
+            }
         }
     }
 }

@@ -60,9 +60,9 @@ public class Connection {
         switch (message.type()) {
             case BIND -> {
                 sendMessage(DgLabMessage.bind(message.clientId(), message.targetId(), "200"));
-                this.player = Server.getInstance().getPlayerManager().getPlayers().get(UUID.fromString(clientId));
-                this.scoreboard = new Scoreboard("DgLab Strength of " + player.getOriginName());
-                this.scoreboard.addViewer(player, DisplaySlot.SIDEBAR);
+                this.player = Server.getInstance().getPlayerManager().getPlayers().get(UUID.fromString(clientId)).getControlledEntity();
+                this.scoreboard = new Scoreboard("DgLab Strength of " + player.getDisplayName());
+                this.scoreboard.addViewer(player.getController(), DisplaySlot.SIDEBAR);
             }
             case MSG -> {
                 Matcher matcher = STRENGTH_PATTERN.matcher(message.message());

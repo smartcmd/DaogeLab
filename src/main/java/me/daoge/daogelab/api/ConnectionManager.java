@@ -12,7 +12,7 @@ public class ConnectionManager {
     public static final Set<Connection> CONNECTIONS = new CopyOnWriteArraySet<>();
 
     public static Connection getByPlayer(EntityPlayer player) {
-        return getByUUID(player.getLoginData().getUuid());
+        return getByUUID(player.getUniqueId());
     }
 
     public static Connection getByUUID(UUID uuid) {

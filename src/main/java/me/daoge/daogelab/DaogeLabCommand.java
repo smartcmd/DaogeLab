@@ -5,14 +5,14 @@ import me.daoge.daogelab.utils.QRCodeUtils;
 import org.allaymc.api.command.Command;
 import org.allaymc.api.command.SenderType;
 import org.allaymc.api.command.tree.CommandTree;
-import org.allaymc.api.permission.PermissionGroups;
+import org.allaymc.api.permission.OpPermissionCalculator;
 import org.allaymc.api.utils.TextFormat;
 
 public class DaogeLabCommand extends Command {
 
     public DaogeLabCommand() {
-        super("dglab", "DgLab main command");
-        this.permissions.forEach(PermissionGroups.MEMBER::addPermission);
+        super("dglab", "DgLab main command", "dglab.command");
+        OpPermissionCalculator.NON_OP_PERMISSIONS.addAll(this.permissions);
     }
 
     @Override
@@ -25,19 +25,19 @@ public class DaogeLabCommand extends Command {
                                     DaogeLab.INSTANCE.getConfig().useHttps() ? "wss" : "ws",
                                     DaogeLab.INSTANCE.getConfig().address(),
                                     DaogeLab.INSTANCE.getConfig().publicPort(),
-                                    player.getLoginData().getUuid().toString());
+                                    player.getController().getLoginData().getUuid().toString());
                     if (QRCodeUtils.showQRCode(player, qrText)) {
                         player.sendTranslatable(TextFormat.YELLOW + "%daogelab:scan_qr_code");
                         return context.success();
                     }
 
                     return context.fail();
-                }, SenderType.PLAYER)
+                }, SenderType.ACTUAL_PLAYER)
                 .root()
                 .key("disconnect")
                 .exec((context, player) -> {
                     QRCodeUtils.clearQRCode(player);
-                    var connection = ConnectionManager.getByUUID(player.getLoginData().getUuid());
+                    var connection = ConnectionManager.getByUUID(player.getController().getLoginData().getUuid());
                     if (connection != null) {
                         connection.disconnect();
                         player.sendTranslatable(TextFormat.YELLOW + "%daogelab:disconnecting");
@@ -46,7 +46,7 @@ public class DaogeLabCommand extends Command {
                         player.sendTranslatable(TextFormat.RED + "%daogelab:not_connected");
                         return context.fail();
                     }
-                }, SenderType.PLAYER)
+                }, SenderType.ACTUAL_PLAYER)
                 .root()
                 .key("switchmode")
                 .str("modename")

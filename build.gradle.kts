@@ -2,12 +2,13 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     id("java-library")
+    id("org.allaymc.gradle.plugin") version "0.2.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "me.daoge.daogelab"
 description = "A DgLab plugin for Minecraft: Bedrock Edition running in Allay platform"
-version = "0.2.0"
+version = "0.3.0"
 
 java {
     toolchain {
@@ -15,14 +16,24 @@ java {
     }
 }
 
+allay {
+    api = "0.17.0"
+
+    plugin {
+        entrance = ".DaogeLab"
+        name = "DaogeLab"
+        description = "A DgLab plugin for Minecraft: Bedrock Edition running in Allay platform"
+        authors += "daoge_cmd"
+        api = ">=0.17.0"
+    }
+}
+
 repositories {
     mavenCentral()
-    maven("https://central.sonatype.com/repository/maven-snapshots/")
     maven("https://storehouse.okaeri.eu/repository/maven-public/")
 }
 
 dependencies {
-    compileOnly(group = "org.allaymc.allay", name = "api", version = "0.14.0")
     compileOnly(group = "org.projectlombok", name = "lombok", version = "1.18.34")
 
     implementation(group = "io.netty", name = "netty-codec-http", version = "4.1.97.Final")
